@@ -95,7 +95,7 @@
           <img [src]="currentMemory().src" alt="Memory" class="memory-image">
         </div>
         <div class="memory-frame" *ngIf="currentMemory().type === 'video'">
-          <video class="memory-video" controls [poster]="currentMemory().poster">
+          <video class="memory-video" controls playsinline webkit-playsinline [poster]="currentMemory().poster">
             <source [src]="currentMemory().src" type="video/mp4">
             Your browser does not support the video tag.
           </video>
