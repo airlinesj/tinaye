@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <rect width="64" height="64" fill="#faf8f3"/>
+    <g transform="translate(32, 32)">
+      <path d="M 0,-12 C -8,-20 -20,-20 -20,-8 C -20,4 0,20 0,20 C 0,20 20,4 20,-8 C 20,-20 8,-20 0,-12 Z" fill="#ff1493" stroke="#c41e3a" stroke-width="1.5"/>
+    </g>
+  </svg>
+</body>
+</html>

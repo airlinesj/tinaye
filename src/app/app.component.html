@@ -1,0 +1,141 @@
+<div class="proposal-container">
+  <!-- Floating Hearts Animation -->
+  <div class="floating-hearts">
+    <div class="heart" *ngFor="let i of [1,2,3,4,5]" [style.animation-delay]="(i * 0.2) + 's'">❤️</div>
+  </div>
+
+  <!-- Landing Page Section -->
+  <section class="landing-section" *ngIf="showLanding">
+    <div class="landing-content" [@slideInRight]>
+      <div class="landing-image-wrapper">
+        <img src="assets/WhatsApp Image 2026-02-08 at 16.33.04.jpeg" alt="Beautiful Memory" class="landing-image">
+        <div class="image-overlay">
+          <div class="overlay-text-wrapper">
+            <h2 class="landing-subtitle">A Special Moment</h2>
+            <p class="landing-description">This is where our story begins... 💕</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="landing-text-content">
+        <h1 class="landing-title">
+          <span class="title-heart">💕</span>
+          Hi Beautiful
+          <span class="title-heart">💕</span>
+        </h1>
+        <p class="landing-text">
+          I've created something special just for you. Click when you're ready to see our story unfold...
+        </p>
+        <button class="enter-button" (click)="enterProposal()">
+          Enter 💗
+        </button>
+        <p class="skip-text">Or just wait, it will start automatically ✨</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Header with Hearts -->
+  <div class="floating-hearts-proposal" *ngIf="showProposal">
+    <div class="heart-proposal" *ngFor="let i of [1,2,3,4,5]" [style.animation-delay]="(i * 0.2) + 's'">❤️</div>
+  </div>
+
+  <!-- Main Proposal Section -->
+  <section class="proposal-section" [@fadeInUp] *ngIf="showProposal">
+    <div class="proposal-content">
+      <div class="title-wrapper">
+        <h1 class="main-title">
+          <span class="heart-emoji animate-heartBeat">💕</span>
+          <span class="text-gradient">My Dearest Love</span>
+          <span class="heart-emoji animate-heartBeat">💕</span>
+        </h1>
+      </div>
+
+      <div class="proposal-paragraph">
+        <p class="cute-text">
+          With every moment we share, my heart grows fonder. You are the light in my darkest days, 
+          the smile I can't hide, and the love I couldn't have imagined. These memories are just 
+          the beginning of our beautiful story. I want to spend every day making you feel as special 
+          as you make me feel. 
+        </p>
+      </div>
+
+      <div class="special-message">
+        <p class="italic-text">
+          "Every moment with you is a memory I treasure forever. You deserve all the love in the world,
+          and I promise to give you exactly that and more. Forever and always. 💖"
+        </p>
+      </div>
+
+      <div class="proposal-question">
+        <h2 class="question-text">Will you be my Valentine forever? 💗</h2>
+      </div>
+
+      <div class="yes-button-wrapper">
+        <button class="yes-button">YES! 💕</button>
+        <div class="confetti-container" id="confetti"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Memories Section -->
+  <section class="memories-section" *ngIf="showProposal">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="icon">📸</span>
+        Our Beautiful Memories
+        <span class="icon">💫</span>
+      </h2>
+      <p class="section-subtitle">Every moment with you is a treasure I cherish</p>
+    </div>
+
+    <!-- Main Memory Display -->
+    <div class="memory-showcase">
+      <div class="memory-viewer">
+        <div class="memory-frame" *ngIf="currentMemory().type === 'image'">
+          <img [src]="currentMemory().src" alt="Memory" class="memory-image">
+        </div>
+        <div class="memory-frame" *ngIf="currentMemory().type === 'video'">
+          <video class="memory-video" controls [poster]="currentMemory().poster">
+            <source [src]="currentMemory().src" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <p class="memory-caption">{{ currentMemory().caption }}</p>
+
+      <!-- Navigation Controls -->
+      <div class="navigation-controls">
+        <button class="nav-button prev-button" (click)="prevMemory()">
+          <i class="fas fa-chevron-left"></i> Previous
+        </button>
+        <span class="memory-counter">{{ currentMemoryIndex + 1 }} / {{ memories.length }}</span>
+        <button class="nav-button next-button" (click)="nextMemory()">
+          Next <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Thumbnails Gallery -->
+    <div class="thumbnails-gallery">
+      <div class="thumbnail" 
+           *ngFor="let memory of memories; let i = index"
+           [class.active]="i === currentMemoryIndex"
+           (click)="currentMemoryIndex = i">
+        <div class="thumbnail-wrapper">
+          <img *ngIf="memory.type === 'image'" [src]="memory.src" alt="Thumbnail">
+          <div *ngIf="memory.type === 'video'" class="video-thumbnail">
+            <img [src]="memory.poster" alt="Video Thumbnail">
+            <span class="play-icon">▶</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" *ngIf="showProposal">
+    <p class="footer-text">Made with <span class="heart-red">❤️</span> by Tinaye for the love of his life</p>
+    <p class="footer-date">Valentine's Day 2026</p>
+  </footer>
+</div>
